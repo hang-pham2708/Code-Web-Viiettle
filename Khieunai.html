@@ -210,8 +210,47 @@
                         <div id="result-autocomplete2" style="display:block">
                             
                         </div>
+
+                        <a href="javascript:void(0)" class="header__address" onclick="OpenLocation()"><style>
+                            .header__address {
+                        color: #fff;
+                        font-size: 11px;
+                        line-height: 13px;
+                        width: 230px;
+                        padding-left: 15px;
+                        background: #C81B1B;
+                        padding: 4px 6px 4px 10px;
+                        border-radius: 20px;
+                        position: relative;
+                    }
+                            .header__address span {
+                        color: #fff;
+                        font-weight: bold;
+                        width: max-content;
+                        display: -webkit-box;
+                        -webkit-box-orient: vertical;
+                        
+                        overflow: hidden;
+                        max-width: 130px;
+                        text-transform: capitalize;
+                        padding-right: 15px;
+                    }
+                            .header__address span::before {
+                        border-left: 5px solid transparent;
+                        border-right: 5px solid transparent;
+                        border-top: 5px solid #fff;
+                        content: '';
+                        position: absolute;
+                        top: 43%;
+                        right: 30px;
+                    }
+                        </style>
+                    
+                        Xem giá, tồn kho tại:
+                        <span data-province="" data-district="" data-ward="" data-erpprovince="" data-erpdistrict="">Toàn quốc</span>
+                    </a>
                     </div>
-                    <a href="javascript:void(0)" class="header__address" onclick="OpenLocation()"></a>
+                    
                     <a href="tel:18008123">
                         <div class="box-phone-store">
                             <div class="icons2 icon-phone">
