@@ -1,76 +1,213 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tra cứu đơn hàng</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script> <!-- Thêm Google reCAPTCHA -->
-</head>
-<body>
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <h2 class="text-center">Tra cứu đơn hàng</h2>
-                <form action="submit_order_lookup.php" method="POST">
-                    <!-- Mã đơn hàng -->
-                    <div class="mb-3">
-                        <label for="orderCode" class="form-label">Nhập mã đơn hàng</label>
-                        <input type="text" class="form-control" id="orderCode" name="orderCode" placeholder="Nhập mã đơn hàng" required>
-                    </div>
-                    <!-- Số điện thoại -->
-                    <div class="mb-3">
-                        <label for="phoneNumber" class="form-label">Nhập số điện thoại</label>
-                        <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Nhập số điện thoại" required pattern="^\d{10,11}$">
-                        <div class="form-text">Số điện thoại gồm 10-11 chữ số</div>
-                    </div>
-                    <!-- Mã bảo mật -->
-                    <div class="mb-3">
-                        <label for="captcha" class="form-label">Nhập mã bảo mật</label>
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="captcha" name="captcha" placeholder="Nhập mã bảo mật" required>
-                            <span class="input-group-text"><img src="captcha.png" alt="Mã bảo mật" class="captcha-img"></span>
-                        </div>
-                    </div>
-                    <!-- Google reCAPTCHA -->
-                    <div class="g-recaptcha mb-3" data-sitekey="your-site-key"></div>
-                    
-                    <button type="submit" class="btn btn-primary w-100">Tra cứu</button>
-                </form>
-                
-                <!-- Thông báo khi gửi form thành công hoặc lỗi -->
-                <div id="formFeedback" class="mt-3"></div>
+<div style="width: 100%; height: 100%; position: relative; background: white">
+    <div style="width: 1349px; height: 377px; left: 0px; top: 608px; position: absolute">
+        <div style="width: 1349px; height: 294.39px; left: 0px; top: 0px; position: absolute">
+            <div style="width: 1349px; height: 294.39px; left: 0px; top: 0px; position: absolute; background: white"></div>
+            <div style="width: 205px; height: 113.90px; left: 92px; top: 21.91px; position: absolute">
+                <div style="width: 205px; height: 113.90px; left: 0px; top: 0px; position: absolute; background: white"></div>
+                <div style="width: 136.17px; height: 14.89px; left: 0px; top: 0px; position: absolute; color: black; font-size: 14px; font-family: Inter; font-weight: 700; word-wrap: break-word">Tư Vấn Và Đặt Hàng</div>
+                <div style="width: 161.20px; height: 14.89px; left: 0px; top: 24.53px; position: absolute; color: #555458; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">Phương thức thanh toán</div>
+                <div style="width: 136.17px; height: 14.89px; left: 0px; top: 49.07px; position: absolute; color: #555458; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">Hướng dẫn đặt hàng</div>
+                <div style="width: 106.13px; height: 14.89px; left: 0px; top: 73.60px; position: absolute; color: #555458; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">Góp ý, khiếu nại</div>
+            </div>
+            <div style="width: 227px; height: 166.47px; left: 297px; top: 21.91px; position: absolute">
+                <div style="width: 227px; height: 166.47px; left: 0px; top: 0px; position: absolute; background: white"></div>
+                <div style="width: 79px; height: 14.89px; left: 0px; top: 0px; position: absolute; color: black; font-size: 14px; font-family: Inter; font-weight: 700; word-wrap: break-word">Chính Sách</div>
+                <div style="width: 139px; height: 14.89px; left: 0px; top: 24.53px; position: absolute; color: #555458; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">Chính sách bảo hành</div>
+                <div style="width: 120px; height: 14.89px; left: 0px; top: 49.07px; position: absolute; color: #555458; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">Chính sách đổi trả</div>
+                <div style="width: 143px; height: 14.89px; left: 0px; top: 73.60px; position: absolute; color: #555458; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">Chính sách giao hàng</div>
+                <div style="width: 227px; height: 14.89px; left: 0px; top: 122.66px; position: absolute; color: #555458; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">Chính sách bảo vệ dữ liệu cá nhân</div>
+                <div style="width: 134px; height: 14.89px; left: 0px; top: 98.13px; position: absolute; color: #555458; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">Chính sách khui hộp</div>
+            </div>
+            <div style="width: 227px; height: 166.47px; left: 726px; top: 21.91px; position: absolute">
+                <div style="width: 227px; height: 166.47px; left: 0px; top: 0px; position: absolute; background: white"></div>
+                <div style="width: 67px; height: 14.89px; left: 0px; top: 0px; position: absolute; color: black; font-size: 14px; font-family: Inter; font-weight: 700; word-wrap: break-word">Hệ Thống </div>
+                <div style="width: 182px; height: 14.89px; left: 0px; top: 24.53px; position: absolute; color: #555458; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">Quy chế hoạt động website</div>
+                <div style="width: 219px; height: 14.89px; left: 0px; top: 49.07px; position: absolute; color: #555458; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">Siêu thị gần nhất (Hơn 400 shop)</div>
+                <div style="width: 185px; height: 14.89px; left: 0px; top: 73.60px; position: absolute; color: #555458; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">Chuyên trang Cộng tác viên</div>
+            </div>
+            <div style="width: 202px; height: 166.47px; left: 524px; top: 21.91px; position: absolute">
+                <div style="width: 202px; height: 166.47px; left: 0px; top: 0px; position: absolute; background: white"></div>
+                <div style="width: 128px; height: 14.89px; left: 0px; top: 0px; position: absolute; color: black; font-size: 14px; font-family: Inter; font-weight: 700; word-wrap: break-word">Tra Cứu Thông Tin</div>
+                <div style="width: 159px; height: 14.89px; left: 0px; top: 24.53px; position: absolute; color: #555458; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">Tra cứu hóa đơn điện tử</div>
+                <div style="width: 152px; height: 14.89px; left: 0px; top: 49.07px; position: absolute; color: #555458; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">Tra cứu ưu đãi của bạn</div>
+                <div style="width: 133px; height: 14.89px; left: 0px; top: 73.60px; position: absolute; color: #555458; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">Trung tâm bảo hành</div>
+            </div>
+            <div style="width: 317px; height: 264.60px; left: 953px; top: 21.91px; position: absolute">
+                <div style="width: 317px; height: 264.60px; left: 0px; top: 0px; position: absolute; background: white"></div>
+                <div style="width: 213px; height: 14.89px; left: 0px; top: 0px; position: absolute; color: black; font-size: 14px; font-family: Inter; font-weight: 700; word-wrap: break-word">Tổng đài hỗ trợ (8h00 - 22h00)</div>
+                <div style="width: 258px; height: 14.89px; left: 0px; top: 24.53px; position: absolute; color: #555458; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">Tư vấn bán hàng: 1800 8123 (Miễn phí)</div>
+                <div style="width: 197px; height: 14.89px; left: 0px; top: 49.07px; position: absolute; color: #555458; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">CSKH & bảo hành: 1900 8096</div>
+                <div style="width: 309px; height: 14.89px; left: 0px; top: 73.60px; position: absolute; color: #555458; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">Tư vấn bán hàng Doanh nghiệp: 02466599666</div>
+                <div style="width: 233px; height: 14.89px; left: 0px; top: 98.13px; position: absolute; color: #555458; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">Khảo sát mua hàng tại Viettel Store</div>
+                <img style="width: 259px; height: 53.45px; left: 0px; top: 166.47px; position: absolute" src="3.jpg" />
+                <img style="width: 130px; height: 39.43px; left: 0px; top: 127.04px; position: absolute" src="2.png" />
+                <img style="width: 130px; height: 39.43px; left: 148px; top: 127.04px; position: absolute" src="1.png" />
+            </div>
+        </div>
+        <div style="width: 1349px; height: 82.61px; left: 0px; top: 294.39px; position: absolute; background: #F9F9F9"></div>
+        <div style="width: 1170px; height: 26.29px; left: 92px; top: 335.57px; position: absolute; color: #555458; font-size: 12px; font-family: Inter; font-weight: 700; word-wrap: break-word">© 2018 Công ty TNHH Nhà nước Một thành viên Thương mại và Xuất nhập khẩu Viettel. Đăng ký doanh nghiệp số 0104831030, do Sở Kế hoạch và Đầu tư Hà Nội cấp lần đầu ngày 25/01/2006, thay đổi lần thứ 39 ngày 27 tháng 8 năm 2021. Địa chỉ: Số 01, Phố Giang Văn Minh, phường Kim Mã, quận Ba Đình, Thành phố Hà Nội. Chịu trách nhiệm nội dung: Đinh Sơn Tùng.</div>
+        <div style="width: 360px; height: 35.05px; left: 92px; top: 294.39px; position: absolute">
+            <div style="width: 360px; height: 17.52px; left: 0px; top: 0px; position: absolute; color: #333333; font-size: 12px; font-family: Inter; font-weight: 700; word-wrap: break-word">Điện thoại - Điện thoại iPhone - iPhone 16</div>
+            <div style="width: 360px; height: 17.52px; left: 0px; top: 17.52px; position: absolute; color: #333333; font-size: 12px; font-family: Inter; font-weight: 700; word-wrap: break-word">iPhone 16 Pro - iPhone 16 Pro Max - iPhone 16 Plus</div>
+        </div>
+        <div style="width: 360px; height: 35.05px; left: 512px; top: 296.15px; position: absolute">
+            <div style="width: 360px; height: 17.52px; left: 0px; top: 0px; position: absolute; color: #333333; font-size: 12px; font-family: Inter; font-weight: 700; word-wrap: break-word">Điện thoại Sámung - Điện thoại Vivo - Điện thoại OPPO</div>
+            <div style="width: 360px; height: 17.52px; left: 0px; top: 17.52px; position: absolute; color: #333333; font-size: 12px; font-family: Inter; font-weight: 700; word-wrap: break-word">Samsung Galaxy S24 Ultra - Samsung Galaxy Z Flip6|Z Fold6</div>
+        </div>
+        <div style="width: 360px; height: 35.05px; left: 932px; top: 294.39px; position: absolute">
+            <div style="width: 360px; height: 17.52px; left: 0px; top: 0px; position: absolute; color: #333333; font-size: 12px; font-family: Inter; font-weight: 700; word-wrap: break-word">Laptop - Máy tính bảng - Đồng hồ thông minh</div>
+            <div style="width: 360px; height: 17.52px; left: 0px; top: 17.52px; position: absolute; color: #333333; font-size: 12px; font-family: Inter; font-weight: 700; word-wrap: break-word">Phụ kiện - Tivi - Gia dụng - Sim số đẹp</div>
+        </div>
+    </div>
+    <div style="width: 1373px; height: 64px; left: 0px; top: 50px; position: absolute; background: #EE0033"></div>
+    <div style="width: 1373px; height: 50px; left: 0px; top: 0px; position: absolute; background: white"></div>
+    <div style="width: 1373px; height: 51.44px; left: 0px; top: 114px; position: absolute; background: white"></div>
+    <img style="width: 1190.82px; height: 50px; left: 91.60px; top: 0px; position: absolute" src="1.jpg" />
+    <div style="width: 351.14px; height: 34px; left: 301.66px; top: 65px; position: absolute">
+        <div style="width: 351.14px; height: 34px; left: 0px; top: 0px; position: absolute; background: white; border-radius: 20px; border: 1px #DFDFDF solid"></div>
+        <div style="width: 289.05px; left: 36.64px; top: 10px; position: absolute; color: #555555; font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">Bạn cần tìm sản phẩm nào ...</div>
+        <div style="width: 20.36px; height: 20px; left: 5.09px; top: 7px; position: absolute">
+            <img src="https://img.icons8.com/?size=100&id=7695&format=png&color=000000" alt="icon tư vấn" style="width: 16px; height: 16px; margin-right: 5px; vertical-align: middle;">                
             </div>
         </div>
     </div>
+    <div style="width: 199.88px; height: 50px; left: 81.42px; top: 57px; position: absolute">
+        <div style="width: 199.88px; height: 50px; left: 0px; top: 0px; position: absolute; background: #EE0033"></div>
+        <img style="width: 169.36px; height: 20px; left: 15.27px; top: 15px; position: absolute" src="1.png" />
+    </div>
+    <div style="width: 142.49px; height: 34px; left: 672.76px; top: 65px; position: absolute">
+        <div style="width: 142.49px; height: 34px; left: 0px; top: 0px; position: absolute; background: #C81B1B; border-radius: 10px"></div>
+        <div style="width: 107.89px; left: 5.09px; top: 3px; position: absolute; color: white; font-size: 11px; font-family: Inter; font-weight: 400; word-wrap: break-word">Xem giá, tồn kho tại:</div>
+        <div style="width: 57px; left: 5.09px; top: 15px; position: absolute; color: white; font-size: 11px; font-family: Inter; font-weight: 700; word-wrap: break-word">Toàn quốc</div>
+    </div>
+    <div style="width: 122.13px; height: 39px; left: 845.78px; top: 63px; position: absolute">
+        <div style="width: 122.13px; height: 39px; left: 0px; top: 0px; position: absolute; background: #C81B1B; border-radius: 10px"></div>
+        <div style="width: 93.64px; left: 24.43px; top: 3px; position: absolute; color: white; font-size: 11px; font-family: Inter; font-weight: 400; word-wrap: break-word">Tư vấn mua hàng:
+        </div>
+        <div style="width: 59.03px; left: 35.62px; top: 19px; position: absolute; color: white; font-size: 11px; font-family: Inter; font-weight: 700; word-wrap: break-word">1800 8123</div>
+        <div style="width: 15.27px; height: 20px; left: 7.12px; top: 9px; position: absolute; border-radius: 10px">
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Kiểm tra thông tin khi gửi form
-        document.querySelector('form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Ngừng gửi form ngay lập tức
+        </div>
+    </div>
+    <div style="height: 38px; left: 988.28px; top: 63px; position: absolute">
+        <div style="width: 28.50px; height: 23px; left: 6.11px; top: -0px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
+            <div style="width: 28.50px; height: 20.12px; background: white"></div>
+        </div>
+        <div style="width: 39.69px; left: 0px; top: 25px; position: absolute; color: white; font-size: 11px; font-family: Inter; font-weight: 700; word-wrap: break-word">Tin tức</div>
+    </div>
+    <div style="height: 35px; left: 1165.37px; top: 66px; position: absolute">
+        <div style="width: 53.94px; left: 0px; top: 22px; position: absolute; color: white; font-size: 11px; font-family: Inter; font-weight: 700; word-wrap: break-word">Cửa hàng</div>
+        <div style="width: 22.39px; height: 22px; left: 16.28px; top: -0px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
+            <div style="width: 18.67px; height: 18.34px; background: white"></div>
+        </div>
+    </div>
+    <div style="height: 35px; left: 1239.67px; top: 66px; position: absolute">
+        <div style="width: 49.87px; left: 0px; top: 22px; position: absolute; color: white; font-size: 11px; font-family: Inter; font-weight: 700; word-wrap: break-word">Giỏ hàng</div>
+        <div style="width: 26.46px; height: 22px; left: 12.21px; top: -0px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
+            <div style="width: 24.81px; height: 19.25px; background: white"></div>
+        </div>
+    </div>
+    <div style="width: 96.69px; height: 33px; left: 1048.32px; top: 66px; position: absolute">
+        <div style="width: 96.69px; left: 0px; top: 20px; position: absolute; color: white; font-size: 11px; font-family: Inter; font-weight: 700; word-wrap: break-word">Tra cứu đơn hàng</div>
+        <div style="width: 16.97px; height: 17.84px; left: 38.68px; top: 0px; position: absolute; background: white"></div>
+    </div>
+    <div style="width: 76.33px; height: 24px; left: 215.77px; top: 128px; position: absolute">
+        <div style="width: 47.84px; left: 28.50px; top: 4px; position: absolute; text-align: center; color: black; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">Laptop</div>
+        <div style="width: 24.43px; height: 24px; left: 0px; top: 24px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
+            <div style="width: 22px; height: 4px; background: black"></div>
+            <div style="width: 18.32px; height: 11px; background: black"></div>
+        </div>
+    </div>
+    <div style="width: 121.12px; height: 25px; left: 320.60px; top: 130px; position: absolute">
+        <div style="width: 95.67px; left: 25.44px; top: 2px; position: absolute; text-align: center; color: black; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">Máy tính bảng</div>
+        <div style="width: 22.39px; height: 25px; left: 0px; top: 25px; position: absolute">
+            <div style="width: 16.28px; height: 20px; left: 3.05px; top: 25px; position: absolute; background: black; border-radius: 2px"></div>
+        </div>
+    </div>
+    <div style="width: 22px; height: 20px; left: 466px; top: 129px; position: absolute">
+        <div style="width: 11px; height: 8.33px; left: 5.50px; top: 14.97px; position: absolute; border-radius: 2px; border: 1px black solid"></div>
+        <div style="width: 5.50px; height: 2.50px; left: 8.25px; top: 18.27px; position: absolute; border: 1px black solid"></div>
+        <div style="width: 5.50px; height: 4.17px; left: 8.25px; top: 1.67px; position: absolute; border: 1px black solid"></div>
+    </div>
+    <div style="width: 137.40px; height: 4.32px; left: 489.56px; top: 130px; position: absolute; text-align: center; color: black; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">Đồng hồ thông minh</div>
+    <div style="width: 161.83px; height: 17px; left: 755.20px; top: 132px; position: absolute">
+        <div style="width: 16.28px; height: 16px; left: 0px; top: 0px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
+            <div style="width: 16px; height: 14px; background: black"></div>
+        </div>
+        <div style="width: 138.42px; left: 23.41px; top: -0px; position: absolute; text-align: center; color: black; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">Điện máy - Gia dụng</div>
+    </div>
+    <div style="width: 42.75px; height: 17px; left: 940.44px; top: 133px; position: absolute">
+        <div style="width: 16.28px; height: 16px; left: 0px; top: 1px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
+            <div style="width: 16.28px; height: 12.50px; background: black"></div>
+        </div>
+        <div style="width: 24.43px; left: 18.32px; top: -0px; position: absolute; text-align: center; color: black; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">Tivi</div>
+    </div>
+    <div style="width: 76.33px; height: 18px; left: 648.33px; top: 132px; position: absolute">
+        <div style="width: 16.28px; height: 16px; left: 0px; top: 0px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
+            <div style="width: 16.28px; height: 13px; background: black"></div>
+        </div>
+        <div style="width: 58.01px; left: 18.32px; top: 1px; position: absolute; text-align: center; color: black; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">Phụ kiện</div>
+    </div>
+    <div style="width: 155.72px; left: 1000.49px; top: 129px; position: absolute">
+        <div style="width: 123.15px; left: 32.57px; top: 4px; position: absolute; text-align: center; color: black; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">Mua kèm gói cước</div>
+        <img style="width: 24.43px; height: 24px; left: 0px; top: 0px; position: absolute" src="https://via.placeholder.com/24x24" />
+    </div>
+    <div style="width: 135.37px; left: 1165.37px; top: 128px; position: absolute">
+        <i class="icons2 icon-menu-giadung"></i>
+        <div style="width: 109.92px; left: 25.44px; top: 4px; position: absolute; text-align: center; color: black; font-size: 14px; font-family: Inter; font-weight: 400; word-wrap: break-word">Sim số - Dịch vụ</div>
+        <img style="width: 25.44px; height: 25px; left: 0px; top: 0px; position: absolute"  />
+    </div>
+    <div style="width: 91.60px; height: 20px; left: 91.60px; top: 129px; position: absolute">
+        <div style="width: 20.36px; height: 20px; left: 0px; top: 20px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
             
-            let orderCode = document.getElementById('orderCode').value;
-            let phoneNumber = document.getElementById('phoneNumber').value;
-            let captcha = document.getElementById('captcha').value;
-            
-            // Kiểm tra tính hợp lệ của các trường
-            if (!orderCode || !phoneNumber || !captcha) {
-                document.getElementById('formFeedback').innerHTML = '<div class="alert alert-danger">Vui lòng điền đầy đủ thông tin.</div>';
-                return;
-            }
-            
-            if (!/^\d{10,11}$/.test(phoneNumber)) {
-                document.getElementById('formFeedback').innerHTML = '<div class="alert alert-danger">Số điện thoại không hợp lệ.</div>';
-                return;
-            }
-            
-            // Nếu hợp lệ, gửi dữ liệu (ở đây có thể gửi Ajax hoặc chuyển hướng trang)
-            document.getElementById('formFeedback').innerHTML = '<div class="alert alert-success">Đang xử lý...</div>';
-            
-            // Thực hiện gửi form ở đây (ví dụ bằng AJAX)
-            // form.submit(); // Hoặc sử dụng AJAX để gửi dữ liệu
-        });
-    </script>
-</body>
-</html>
+        </div>
+    </div>
+    <div style="width: 1170px; height: 350px; left: 90px; top: 212px; position: absolute">
+        <div style="width: 115.68px; left: 0px; top: 0px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 400; word-wrap: break-word">Trang chủ </div>
+        <div style="width: 201.93px; left: 176.57px; top: 0px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 400; word-wrap: break-word">Tra cứu đơn hàng  </div>
+        <div style="width: 561.15px; height: 59px; left: 548.98px; top: 83px; position: absolute">
+            <div style="width: 553px; height: 59px; left: 0px; top: 0px; position: absolute; background: #FFFBFB; border-radius: 50px; border: 1px #6B6969 solid"></div>
+            <div style="left: 19px; top: 15px; position: absolute; color: #B6ACAC; font-size: 24px; font-family: Inter; font-weight: 400; word-wrap: break-word">Nhập mã đơn hàng để tra cứu</div>
+            <div style="width: 177px; height: 59px; left: 376px; top: 0px; position: absolute; background: #FF5A13; border-radius: 50px; border: 1px #6B6969 solid"></div>
+            <div style="left: 410px; top: 15px; position: absolute; color: white; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">TRA CỨU</div>
+        </div>
+        <div style="width: 561.15px; height: 59px; left: 548.98px; top: 249px; position: absolute">
+            <div style="width: 320px; height: 59px; left: 0px; top: 0px; position: absolute; background: #FFFBFB; border-radius: 50px; border: 1px #6B6969 solid"></div>
+            <div style="left: 19px; top: 15px; position: absolute; color: #B6ACAC; font-size: 24px; font-family: Inter; font-weight: 400; word-wrap: break-word">Nhập mã bảo mật</div>
+            <div style="width: 50px; height: 50px; left: 342px; top: 5px; position: absolute">
+                <img src="https://img.icons8.com/?size=100&id=22104&format=png&color=ff0000" alt="icon tư vấn" style="width: 37px; height: 38px; margin-right: 5px; vertical-align: middle;">            </div>
+        </div>
+        <div style="width: 539.84px; height: 59px; left: 548.98px; top: 166px; position: absolute">
+            <div style="width: 315px; height: 59px; left: 0px; top: 0px; position: absolute; background: #FFFBFB; border-radius: 50px; border: 1px #6B6969 solid"></div>
+            <div style="left: 14px; top: 15px; position: absolute; color: #B6ACAC; font-size: 24px; font-family: Inter; font-weight: 400; word-wrap: break-word">Nhập số điện thoại</div>
+        </div>
+        <img style="width: 209.04px; height: 62px; left: 960.96px; top: 249px; position: absolute" src="https://viettelstore.vn/Site/Member/Captcha.aspx?rand=0.0530896925468749" />
+        <div style="width: 27.40px; height: 27px; left: 138.01px; top: 3px; position: absolute">
+            <div style="width: 6.85px; height: 13.50px; left: 10.27px; top: 6.75px; position: absolute; border: 2px #B6ACAC solid"></div>
+        </div>
+        <div style="width: 27.40px; height: 27px; left: 138.01px; top: 3px; position: absolute; background: white">
+            <img src="https://img.icons8.com/?size=100&id=60671&format=png&color=C3C3C3" alt="icon tư vấn" style="width: 16px; height: 16px; margin-right: 5px; vertical-align: middle;">
+        </div>
+        <div style="width: 27.40px; height: 27px; left: 20.29px; top: 93px; position: absolute; background: white">
+            <img src="https://img.icons8.com/?size=100&id=60671&format=png&color=C3C3C3" alt="icon tư vấn" style="width: 16px; height: 16px; margin-right: 5px; vertical-align: middle;">        </div>
+        <div style="width: 27.40px; height: 27px; left: 20.29px; top: 167px; position: absolute; background: white">
+            <img src="https://img.icons8.com/?size=100&id=60671&format=png&color=C3C3C3" alt="icon tư vấn" style="width: 16px; height: 16px; margin-right: 5px; vertical-align: middle;">
+        </div>
+        <div style="width: 27.40px; height: 27px; left: 24.35px; top: 239px; position: absolute; background: white">
+            <img src="https://img.icons8.com/?size=100&id=60671&format=png&color=C3C3C3" alt="icon tư vấn" style="width: 16px; height: 16px; margin-right: 5px; vertical-align: middle;">
+        </div>
+        <div style="width: 27.40px; height: 27px; left: 20.29px; top: 323px; position: absolute; background: white">
+            <img src="https://img.icons8.com/?size=100&id=60671&format=png&color=C3C3C3" alt="icon tư vấn" style="width: 16px; height: 16px; margin-right: 5px; vertical-align: middle;">
+        </div>
+        <div style="width: 306.45px; left: 51.75px; top: 93px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 400; word-wrap: break-word">Những câu hỏi thường gặp</div>
+        <div style="width: 421.13px; height: 0px; left: 24.35px; top: 142px; position: absolute; border: 1px #D9D9D9 dotted"></div>
+        <div style="width: 421.13px; height: 0px; left: 20.29px; top: 218px; position: absolute; border: 1px #D9D9D9 dotted"></div>
+        <div style="width: 421.13px; height: 0px; left: 24.35px; top: 301px; position: absolute; border: 1px #D9D9D9 dotted"></div>
+        <div style="width: 279.05px; left: 51.75px; top: 169px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 400; word-wrap: break-word">Phương thức thanh toán</div>
+        <div style="width: 326.75px; left: 51.75px; top: 242px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 400; word-wrap: break-word">Tra cứu đơn hàng trực tuyến</div>
+        <div style="width: 275px; left: 51.75px; top: 321px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 400; word-wrap: break-word">Tìm trung tâm bảo hành</div>
+    </div>
+</div>
